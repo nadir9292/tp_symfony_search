@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div>
+  <h1>Search Product by Price : </h1>
+  {{ form_start(form) }}
+    <p>
+      {{ form_label(form.price, 'Price :' )}}
+      {{ form_widget(form.price)}}
+      {{ form_errors(form.price)}}
+    </p>
+    <div>
+      <button type="sumbit">Submit</>
+    </div>
+  {{ form_end(form) }}
+</div>
+<div>
+  <h1>Query : </h1>
+    {% for item in query %}
+      <h1> Name : {{item.name}}</h1>
+      <h1>Price : {{item.price}}</h1>
+    {% endfor %}
+</div>
+{% endblock body %}
