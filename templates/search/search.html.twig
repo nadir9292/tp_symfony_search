@@ -2,23 +2,21 @@
 
 {% block body %}
 <div>
-  <h1>Search Product by Price : </h1>
+  <h1 class="font-bold text-3xl mb-5">Search Product by Price : </h1>
   {{ form_start(form) }}
     <p>
-      {{ form_label(form.price, 'Price :' )}}
-      {{ form_widget(form.price)}}
+      {{ form_label(form.price, 'Price :', { label_attr: { class: 'text-red-500' } } )}}
+      {{ form_widget(form.price, {attr: {class: 'border-2'} } )}}
       {{ form_errors(form.price)}}
+      <button type="submit" class="focus:outline-none mt-2 text-gray-900 bg-yellow-400 hover:bg-yellow-500 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2">Submit</button>
     </p>
-    <div>
-      <button type="sumbit">Submit</>
-    </div>
   {{ form_end(form) }}
 </div>
 <div>
-  <h1>Query : </h1>
-    {% for item in query %}
-      <h1> Name : {{item.name}}</h1>
-      <h1>Price : {{item.price}}</h1>
-    {% endfor %}
+  <h1 class="font-bold text-2xl mb-5">Query : </h1>
+      {% for item in query %}
+        <h1> Name : {{item.name}}</h1>
+        <h1>Price : {{item.price}}</h1>
+      {% endfor %}
 </div>
 {% endblock body %}

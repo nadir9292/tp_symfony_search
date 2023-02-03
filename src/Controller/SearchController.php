@@ -30,10 +30,11 @@ class SearchController extends AbstractController
     $model = new Product();
     $form = $this->createForm($type, $model);
     $form->handleRequest($this->requestStack->getCurrentRequest());
+
     return $this->render('search/search.html.twig', [
       'products' =>
       $this->productRepository->findAll(), 'form' => $form->createView(),
-      'query' => $this->productRepository->search($form["price"]->getData())->getResult()
+      'query' => $this->productRepository->search(($form["price"]->getData() ?: 0))->getResult()
     ]);
   }
 }
